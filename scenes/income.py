@@ -71,11 +71,13 @@ class ListIncomeCategory(Screen):
 
     
     def add_income_category(self, instance):
+        '''Функция открывает страницу добавления категории доходов.'''
         self.manager.transition = NoTransition()
         self.manager.current = 'create_income_category'
     
 
     def add_category(self, category_name, category_color):
+        '''Функция добавляет новую категорию в список всех категорий доходов.'''
         self.categories.append((category_name, category_color))
         self.category_list.clear_widgets()
         for name, color in self.categories:
@@ -85,6 +87,7 @@ class ListIncomeCategory(Screen):
     
 
     def back(self, instance):
+        '''Функция открывает предыдущую (главную) страницу.'''
         self.manager.transition = NoTransition()
         self.manager.current = 'main_menu'
 
@@ -151,6 +154,7 @@ class CreateIncomeCategory(Screen):
     
 
     def create_category(self, instance):
+        '''Функция создания новой категории дохода.'''
         category_name = self.category_name_input.text.capitalize()
         random_color = self.generate_random_color()
         list_income_category_screen = self.manager.get_screen('list_income_category')
@@ -161,6 +165,7 @@ class CreateIncomeCategory(Screen):
 
 
     def generate_random_color(self):
+        '''Функция генерирует случайный цвет для определенной категории дохода.'''
         r = random.randint(0, 255)
         g = random.randint(0, 255)
         b = random.randint(0, 255)
@@ -168,6 +173,7 @@ class CreateIncomeCategory(Screen):
 
 
     def back(self, instance):
+        '''Функция открывает предыдущую (список категорий доходв) страницу.'''
         self.manager.transition = NoTransition()
         self.manager.current = 'list_income_category'
 

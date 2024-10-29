@@ -47,7 +47,7 @@ class MainMenu(Screen):
             md_bg_color=get_color_from_hex("#3030A6"),
             font_name="Comfortaa",
             font_size="15sp",
-            on_release=self.add_expense
+            on_release=self.add_waste
         ))
         
         self.add_widget(MDFloatingActionButton(
@@ -68,18 +68,22 @@ class MainMenu(Screen):
 
     
     def statistic(self, instance):
+        '''Функция открывает страницу статистики.'''
         print("Статистика")
 
 
     def add_income(self, instance):
+        '''Функция открывает страницу списка доходов.'''
         self.manager.transition = NoTransition()
         self.manager.current = 'list_income_category'
 
 
-    def add_expense(self, instance):
+    def add_waste(self, instance):
+        '''Функция открывает страницу списка расходов.'''
         self.manager.transition = NoTransition()
         self.manager.current = 'list_waste_category'
 
 
     def quit(self, instance):
+        '''Функция выхода из игры.'''
         MDApp.get_running_app().stop()
